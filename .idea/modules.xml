@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/POJ2022_lab08-main_copy.iml" filepath="$PROJECT_DIR$/.idea/POJ2022_lab08-main_copy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab08/lab08.iml" filepath="$PROJECT_DIR$/lab08/lab08.iml" />
+    </modules>
+  </component>
+</project>
