@@ -1,7 +1,6 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchByWordFilter implements Filter {
@@ -29,12 +28,12 @@ public class SearchByWordFilter implements Filter {
     }
 
     @Override
-    public List<CarOffer> filter() {
-        String wordToFind = searchSettings.getWord();
+    public List<CarOffer> filter(SearchSettings searchSettings) {
+        String wordToFind = this.searchSettings.getWord();
 //        System.out.println(wordToFind);
         List<CarOffer> filteredOffers = new ArrayList<>();
         for (CarOffer offer: carOffers
-             ) {
+        ) {
             if (offer.getTitle().contains(wordToFind)){
 //                System.out.println(offer.getTitle());
                 filteredOffers.add(offer);

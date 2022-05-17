@@ -1,7 +1,6 @@
 package com.example;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainProgram {
@@ -14,7 +13,7 @@ public class MainProgram {
             new CarOffer(140000, 2000, LocalDate.now().minusDays(11), "Opel", 14000.00)
     );
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         /**
          * Utwórz klase SearchSettings,
@@ -41,7 +40,6 @@ public class MainProgram {
         searchSettings.setPriceTo(16000.0);
         searchSettings.setWord("Sprzedam");
         searchSettings.setYearFrom(2000);
-//        searchSettings.setYearTo(2005);
 
         /**
          * Utwórz klasę SearchByYearFilter,
@@ -64,10 +62,10 @@ public class MainProgram {
          * filter - ma zwrócić nową listę ogłoszeń spełniających kryteria
          */
 
-        if (yearFilter.canFilter()) {
-//            System.out.println("XdsaD");
+        if(yearFilter.canFilter()){
             List<CarOffer> filteredByYearCarsOffers = yearFilter.filter();
-            if (filteredByYearCarsOffers.size() > 4) {
+            if(filteredByYearCarsOffers.size()>4)
+            {
                 System.out.println("filtrowanie po roczniku nie działa poprawnie");
                 return;
             }
@@ -101,9 +99,10 @@ public class MainProgram {
         priceFilter.setCarOffers(cars);
         priceFilter.setSearchSettings(searchSettings);
 
-        if (priceFilter.canFilter()) {
-            List<CarOffer> filteredCarsOffers = priceFilter.filter();
-            if (filteredCarsOffers.size() > 3) {
+        if(priceFilter.canFilter()){
+            List<CarOffer> filteredCarsOffers = priceFilter.filter(searchSettings);
+            if(filteredCarsOffers.size()>3)
+            {
                 System.out.println("filtrowanie po cenie nie działa poprawnie");
                 return;
             }
@@ -112,9 +111,10 @@ public class MainProgram {
         wordFilter.setCarOffers(cars);
         wordFilter.setSearchSettings(searchSettings);
 
-        if (wordFilter.canFilter()) {
-            List<CarOffer> filteredCarsOffers = wordFilter.filter();
-            if (filteredCarsOffers.size() > 4) {
+        if(wordFilter.canFilter()){
+            List<CarOffer> filteredCarsOffers = wordFilter.filter(searchSettings);
+            if(filteredCarsOffers.size()>4)
+            {
                 System.out.println("filtrowanie po słowie nie działa poprawnie");
                 return;
             }
@@ -123,19 +123,18 @@ public class MainProgram {
 
         milleageFilter.setCarOffers(cars);
         milleageFilter.setSearchSettings(searchSettings);
-        if (milleageFilter.canFilter()) {
-            List<CarOffer> filteredCarsOffers = milleageFilter.filter();
-            if (filteredCarsOffers.size() > 3) {
-                System.out.println("filtrowanie po przebiegu nie działa poprawnie");
+        if(milleageFilter.canFilter()){
+            List<CarOffer> filteredCarsOffers = milleageFilter.filter(searchSettings);
+            if(filteredCarsOffers.size()>3)
+            {
+                System.out.println("filtrowanie po słowie nie działa poprawnie");
                 return;
             }
         }
-
-
         dateFilter.setCarOffers(cars);
         dateFilter.setSearchSettings(searchSettings);
         if(dateFilter.canFilter()){
-            List<CarOffer> filteredCarsOffers = dateFilter.filter();
+            List<CarOffer> filteredCarsOffers = dateFilter.filter(searchSettings);
             if(filteredCarsOffers.size()>4)
             {
                 System.out.println("filtrowanie po dacie nie działa poprawnie");
@@ -155,17 +154,17 @@ public class MainProgram {
          * oraz aby moglą przyjmować rózne rodzaje filtrów w parametrze.
          * Wykorzystaj interfejsy
          */
-//        searcher.addFilter(wordFilter);
-//        searcher.addFilter(priceFilter);
-//        searcher.addFilter(milleageFilter);
-//        searcher.addFilter(dateFilter);
+        searcher.addFilter(wordFilter);
+        searcher.addFilter(priceFilter);
+        searcher.addFilter(milleageFilter);
+        searcher.addFilter(dateFilter);
 
-//        List<CarOffer> filteredCarsOffers = searcher.filter(cars, searchSettings);
-//
-//        if(filteredCarsOffers.size()!=1){
-//            System.out.println("filtrowanie nie działa");
-//        }
-//
-//        System.out.println("Koniec");
+        List<CarOffer> filteredCarsOffers = searcher.filter(cars, searchSettings);
+
+        if(filteredCarsOffers.size()!=1){
+            System.out.println("filtrowanie nie działa");
+        }
+
+        System.out.println("Koniec");
     }
 }

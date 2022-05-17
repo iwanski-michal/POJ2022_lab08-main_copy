@@ -27,11 +27,11 @@ public class SearchByDateFilter implements Filter {
     }
 
     @Override
-    public List<CarOffer> filter() {
-        LocalDate dateFrom = searchSettings.getDateFrom();
+    public List<CarOffer> filter(SearchSettings searchSettings) {
+        LocalDate dateFrom = this.searchSettings.getDateFrom();
         List<CarOffer> filteredOffers = new ArrayList<>();
         for (CarOffer offer:carOffers
-             ) {
+        ) {
             if (offer.getDate().isAfter(dateFrom)){
                 filteredOffers.add(offer);
             }

@@ -26,9 +26,9 @@ public class SearchByMillageFilter implements Filter {
     }
 
     @Override
-    public List<CarOffer> filter() {
-        double to = searchSettings.getMilleageTo();
-        double from = searchSettings.getMilleageFrom();
+    public List<CarOffer> filter(SearchSettings searchSettings) {
+        double to = this.searchSettings.getMilleageTo();
+        double from = this.searchSettings.getMilleageFrom();
         List<CarOffer> filteredOffers = new ArrayList<>();
         if(to != 0){
 //            System.out.println("TO");

@@ -10,12 +10,12 @@ public class SearchByPriceFilter implements Filter {
 
     @Override
     public void setSearchSettings(SearchSettings searchSettings) {
-    this.searchSettings = searchSettings;
+        this.searchSettings = searchSettings;
     }
 
     @Override
     public void setCarOffers(List<CarOffer> carOffers) {
-    this.carOffers = carOffers;
+        this.carOffers = carOffers;
     }
 
     @Override
@@ -28,9 +28,9 @@ public class SearchByPriceFilter implements Filter {
     }
 
     @Override
-    public List<CarOffer> filter() {
-        double to = searchSettings.getPriceTo();
-        double from = searchSettings.getPriceFrom();
+    public List<CarOffer> filter(SearchSettings searchSettings) {
+        double to = this.searchSettings.getPriceTo();
+        double from = this.searchSettings.getPriceFrom();
         List<CarOffer> filteredOffers = new ArrayList<>();
         if(to != 0){
 //            System.out.println("TO");

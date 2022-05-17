@@ -6,5 +6,5 @@ interface Filter {
     void setSearchSettings(SearchSettings searchSettings);
     void setCarOffers(List<CarOffer> carOffers);
     boolean canFilter();
-    List<CarOffer> filter();
+    List<CarOffer> filter(SearchSettings searchSettings);
 }

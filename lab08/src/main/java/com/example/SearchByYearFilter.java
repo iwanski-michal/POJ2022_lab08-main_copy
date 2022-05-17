@@ -26,10 +26,10 @@ public class SearchByYearFilter {
     public boolean canFilter() {
 //        System.out.println(searchSettings.getYearFrom() + "____" + searchSettings.getYearTo());
 
-       if (searchSettings.getYearFrom() != 0 || searchSettings.getYearTo() != 0){
-           return true;
-       }
-       return false;
+        if (searchSettings.getYearFrom() != 0 || searchSettings.getYearTo() != 0){
+            return true;
+        }
+        return false;
     }
 
     public List<CarOffer> filter() {
@@ -43,23 +43,10 @@ public class SearchByYearFilter {
                     filteredOffers.add(offer);
                 }
             }
-        }else if (from != 0){
-            for (CarOffer offer : carOffers
-            ) {
-                if (offer.getYear() >= from) {
-                    filteredOffers.add(offer);
-                }
-            }
-        }else{
-            for (CarOffer offer : carOffers
-            ) {
-                if (offer.getYear() >= from && offer.getYear() <= to) {
-                    filteredOffers.add(offer);
-                }
-            }
         }
+        if (from != 0){
+                    filteredOffers.removeIf(offer -> offer.getPrice() <= from);
+            }
         return filteredOffers;
+        }
     }
-}
-
-
